@@ -30,7 +30,7 @@ def download_model(model="resnet", bucket=BUCKET_NAME):
         storage_location = 'models/{}/{}'.format(model,subdir)
         command = f"gsutil -m cp -r gs://{bucket}/{storage_location} ."
         os.system(command)
-        return subdir
+        return f"{subdir}/cp.ckpt"
     else:
         pass #for other models
         # subdir = ''
