@@ -7,7 +7,7 @@ from wasteassist.params import *
 from google.cloud import storage
 import os
 
-# class Model():
+
 def initialise_model():
     resnet = tensorflow.keras.applications.resnet_v2.ResNet152V2(
         include_top=False, weights='imagenet', input_shape=(256, 256, 3))
@@ -57,16 +57,15 @@ def predict(img, model):
                 'plastic': 5,
                 'trash': 6}
     classes = dict((v, k) for k, v in classes.items())
+    test = tensorflow.keras.preprocessing.image.img_to_array(img)
     test = tensorflow.keras.preprocessing.image.smart_resize(
-        img, (256,256), interpolation='bilinear'
+        test, (256,256), interpolation='bilinear'
     )
     # test = tensorflow.keras.preprocessing.image.load_img(
     #     img_path, grayscale=False, color_mode="rgb", target_size=(256,256), interpolation="nearest"
     # )
-    # test_arr = tensorflow.keras.preprocessing.image.img_to_array(test)
     test_arr = test * 1./255
     test_arr = np.array([test_arr])  # Convert single image to a batch.
-    # predictions = model.predict(input_arr)
     result = model.predict(test_arr)
     class_ = np.argmax(result)
     pred = classes[class_]
