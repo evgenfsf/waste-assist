@@ -2,6 +2,8 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 import os
+from PIL import Image
+import io
 
 app = FastAPI()
 
@@ -20,13 +22,12 @@ def index():
     return dict(greeting="hello")
 
 
-@app.get("/get_img")
-def get_img(uploaded_img):      
-    return {'Confitmation': 'ok'}
+# @app.get("/get_img")
+# def get_img(uploaded_img):
+#     return {'Confitmation': 'ok'}
 
-@app.post("/files")
+@app.post("/files/")
 async def receive_file(file: UploadFile = File(...)):
-    return {"filename": file.filename}
-
-
-
+    image = Image.open(io.BytesIO(await file.read()))
+    image.save("1.jpg")
+    return {"filename": file.filename, "type": file.content_type}
