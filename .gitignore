@@ -8,3 +8,5 @@ raw_data/
 .env
 *Zone.Identifier
 models/
+params.json
+credentials.json

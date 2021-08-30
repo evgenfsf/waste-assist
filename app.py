@@ -1,10 +1,12 @@
 from fastapi.param_functions import Body
 import streamlit as st
-import PIL
 import io
 from PIL import Image
 import requests
 import numpy as np
+import json
+with open('params.json') as f:
+    API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
 
 #upload logo
 
@@ -36,7 +38,7 @@ else:
 if st.button("Click here to classify your waste"):
     # st.write(byte_im)
     with open('test.jpg', "rb") as img:
-        get_img = requests.post('http://localhost:8000/files/', files={"file":img})
+        get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
     st.write(get_img.json()['prediction'])
     # prediction=requests.get('http://localhost:8000/predict',params={'user_img':user_img})
