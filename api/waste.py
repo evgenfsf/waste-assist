@@ -6,9 +6,6 @@ from fastapi.responses import HTMLResponse
 import os
 from PIL import Image
 import io
-import json
-
-API_URL = json.reads("params.json")
 
 model = build_model()
 
