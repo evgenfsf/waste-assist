@@ -1,6 +1,5 @@
 from fastapi.param_functions import Body
 import streamlit as st
-import PIL
 import io
 from PIL import Image
 import requests

@@ -28,7 +28,7 @@ def download_model(model="resnet", bucket=BUCKET_NAME):
     if model == 'resnet':
         subdir = 'resnet_checkpoint'
         storage_location = 'models/{}/{}'.format(model,subdir)
-        command = f"gsutil -m cp -r gs://{bucket}/{storage_location} ."
+        command = f"gsutil -m cp -r gs://{bucket}/{storage_location} /"
         os.system(command)
         return f"{subdir}/cp.ckpt"
     else:
