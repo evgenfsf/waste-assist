@@ -1,10 +1,10 @@
-from fastapi.param_functions import Body
+
 import streamlit as st
 import io
 from PIL import Image
 import requests
 import numpy as np
-import json
+# import json
 # with open('params.json') as f:
 #     API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
 
