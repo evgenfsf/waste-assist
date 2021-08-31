@@ -10,10 +10,10 @@ import numpy as np
 
 #upload logo
 
-st.title("Welcome to Waste-Assist!")
+# st.title("Welcome to Waste-Assist!")
 
-logo = Image.open('/home/luis/code/luchovangal/wasteassistfront/logo.png')
-st.image(logo, width=400)
+# logo = Image.open('/home/luis/code/luchovangal/wasteassistfront/logo.png')
+# st.image(logo, width=400)
 
 #Creating image uploader
 
