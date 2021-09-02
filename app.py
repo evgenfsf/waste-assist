@@ -14,7 +14,7 @@ with open('params.json') as f:
 # st.title("Welcome to Waste-Assist!")
 
 st.markdown(""" <style> .font {
-font-size:50px ; font-family: 'Cooper Black'; color: #000000;} 
+font-size:100px ; font-family: 'Cooper Black'; color: #5d941e;} 
 </style> """, unsafe_allow_html=True)
 st.markdown('<p class="font">Welcome to WasteAssist</p>', unsafe_allow_html=True)
 
