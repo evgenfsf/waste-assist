@@ -4,13 +4,13 @@ import io
 from PIL import Image
 import requests
 import numpy as np
-# import json
-# with open('params.json') as f:
-#     API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
+import json
+with open('params.json') as f:
+    API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
 
 #upload logo
 
-# st.title("Welcome to Waste-Assist!")
+st.title("Welcome to Waste-Assist!")
 
 # logo = Image.open('/home/luis/code/luchovangal/wasteassistfront/logo.png')
 # st.image(logo, width=400)
