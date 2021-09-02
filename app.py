@@ -42,8 +42,3 @@ if st.button("Click here to classify your waste"):
         time.sleep(5)
     st.write(get_img.json()['prediction'])
 
-if st.write(get_img.json()['prediction']) == "plastic":
-    st.text("It's recycable, please remember to rinse the object before putting them on the bin")
-elif st.write(get_img.json()['prediction']) == "paper" or st.write(get_img.json()['prediction']) == "cardboard":
-    st.text("It's recycable, please make sure they're not contaminated with organic waste")
-
