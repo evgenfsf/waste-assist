@@ -40,8 +40,9 @@ if st.button("Click here to classify your waste"):
     with open('test.jpg', "rb") as img:
         get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
-    with st.spinner('Predicting material...'):
-        st.write(get_img.json()['prediction'])
+    with st.spinner('Classifying...'):
+        time.sleep(5)
+    st.write(get_img.json()['prediction'])
     
     # prediction=requests.get('http://localhost:8000/predict',params={'user_img':user_img})
     # st.write(prediction)
