@@ -18,7 +18,7 @@ st.title("Welcome to Waste-Assist!")
 #Creating image uploader
 
 st.sidebar.title("Please upload an image")
-uploaded_img = st.sidebar.file_uploader(" ",type=['png', 'jpg', 'jpeg'] )
+uploaded_img = st.sidebar.file_uploader(" ",type=['jpg', 'jpeg'] )
 
 
 if uploaded_img is not None:
@@ -40,7 +40,9 @@ if st.button("Click here to classify your waste"):
     with open('test.jpg', "rb") as img:
         get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
-    st.write(get_img.json()['prediction'])
+    with st.spinner('Predicting material...'):
+        st.write(get_img.json()['prediction'])
+    
     # prediction=requests.get('http://localhost:8000/predict',params={'user_img':user_img})
     # st.write(prediction)
 
