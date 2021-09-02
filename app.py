@@ -9,6 +9,15 @@ import time
 with open('params.json') as f:
     API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 #upload logo
 
 # st.title("Welcome to Waste-Assist!")
@@ -18,8 +27,8 @@ font-size:100px ; font-family: 'Cooper Black'; color: #5d941e;}
 </style> """, unsafe_allow_html=True)
 st.markdown('<p class="font">Welcome to WasteAssist</p>', unsafe_allow_html=True)
 
-# logo = Image.open('/home/luis/code/luchovangal/wasteassistfront/logo.png')
-# st.image(logo, width=400)
+logo = Image.open('logo.png')
+st.image(logo, width=200)
 
 #Creating image uploader
 
@@ -45,6 +54,10 @@ with st.spinner('Classifying...'):
         with open('test.jpg', "rb") as img:
             get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
+        pred = get_img.json()['prediction']
+            st.markdown(f"This is **{pred}**, it's recycable, please remember to rinse the container")
+
     
-            st.write(get_img.json()['prediction'])
+
+
 
