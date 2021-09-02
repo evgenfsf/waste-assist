@@ -11,7 +11,12 @@ with open('params.json') as f:
 
 #upload logo
 
-st.title("Welcome to Waste-Assist!")
+# st.title("Welcome to Waste-Assist!")
+
+st.markdown(""" <style> .font {
+font-size:50px ; font-family: 'Cooper Black'; color: #000000;} 
+</style> """, unsafe_allow_html=True)
+st.markdown('<p class="font">Welcome to WasteAssist</p>', unsafe_allow_html=True)
 
 # logo = Image.open('/home/luis/code/luchovangal/wasteassistfront/logo.png')
 # st.image(logo, width=400)
