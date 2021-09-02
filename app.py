@@ -5,6 +5,7 @@ from PIL import Image
 import requests
 import numpy as np
 import json
+import time 
 with open('params.json') as f:
     API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
 
@@ -33,43 +34,16 @@ if uploaded_img is not None:
 else:
     print('Image not found, please try again')
 
-# string_img = Image.getdata(user_img)
-
 if st.button("Click here to classify your waste"):
-    # st.write(byte_im)
     with open('test.jpg', "rb") as img:
         get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
     with st.spinner('Classifying...'):
         time.sleep(5)
     st.write(get_img.json()['prediction'])
-    
-    # prediction=requests.get('http://localhost:8000/predict',params={'user_img':user_img})
-    # st.write(prediction)
 
+if st.write(get_img.json()['prediction']) == "plastic":
+    st.text("It's recycable, please remember to rinse the object before putting them on the bin")
+elif st.write(get_img.json()['prediction']) == "paper" or st.write(get_img.json()['prediction']) == "cardboard":
+    st.text("It's recycable, please make sure they're not contaminated with organic waste")
 
-# enter here the address of your flask api
-# url = ''
-
-# response = requests.get(url, params=params)
-
-# prediction = response.json()
-
-# pred = prediction['prediction']
-
-# pred
-
-# For newline
-# st.sidebar.write('\n')
-
-# if st.button("Click here to classify your waste"):
-
-#     if uploaded_img is None:
-
-#         st.sidebar.write("Please upload your photo")
-
-#     else:
-
-#         # for when we have the prediction
-#         with st.spinner('Predicting material...'):
-#             st.text("The material is classified as: pred ")
