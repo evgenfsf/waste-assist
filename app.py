@@ -34,11 +34,12 @@ if uploaded_img is not None:
 else:
     print('Image not found, please try again')
 
-if st.button("Click here to classify your waste"):
-    with open('test.jpg', "rb") as img:
-        get_img = requests.post(f"{API_URL}/files", files={"file":img})
+with st.spinner('Classifying...'):
+        
+    if st.button("Click here to classify your waste"):
+        with open('test.jpg', "rb") as img:
+            get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
-    with st.spinner('Classifying...'):
-        time.sleep(5)
-    st.write(get_img.json()['prediction'])
+    
+            st.write(get_img.json()['prediction'])
 
