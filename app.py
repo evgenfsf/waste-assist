@@ -55,7 +55,9 @@ with st.spinner('Classifying...'):
             get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
         pred = get_img.json()['prediction']
-        st.markdown(f"This is **{pred}**, it's recycable, please remember to rinse the container")
+        st.markdown(f"This appears to be:")
+        st.markdown("# **{pred}**,") 
+        st.markdown("### It's recycable, please remember to rinse the container")
 
     
 
