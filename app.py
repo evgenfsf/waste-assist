@@ -20,7 +20,6 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.markdown(""" <style> .font {
 font-size:85px ; font-family: 'Cooper Black'; color: #5d941e; margin-top: -70px} 
 </style> """, unsafe_allow_html=True)
-# st.markdown('<p class="font">Welcome to WasteAssist</p>', unsafe_allow_html=True)
 st.markdown('<p class="font">Welcome to WasteAssist</p>', unsafe_allow_html=True)
 
 
@@ -30,9 +29,11 @@ st.markdown('<p class="font">Welcome to WasteAssist</p>', unsafe_allow_html=True
 logo = Image.open('logo2.jpg')
 st.sidebar.image(logo, width=300)
 
-st.sidebar.title("Please upload an image")
+st.sidebar.title("How to...")
+st.sidebar.markdown("1. Upload a photo")
+st.sidebar.markdown('2. Click the "classify" button')
+st.sidebar.markdown("3. Wait for the result")
 uploaded_img = st.sidebar.file_uploader(" ",type=['jpg', 'jpeg'] )
-
 
 if uploaded_img is not None:
     user_img = Image.open(uploaded_img)
@@ -49,32 +50,32 @@ else:
 
 with st.spinner('Be patient, saving the world takes time ...'):
         
-    if st.button("Click here to classify your waste"):
+    if st.button("Classify your waste"):
         with open('test.jpg', "rb") as img:
             get_img = requests.post(f"{API_URL}/files", files={"file":img})
     #display prediction
-        pred = get_img.json()['prediction']
+        pred = get_img.json()['prediction'].capitalize()
         st.markdown("This appears to be:")
-        st.markdown(f"**{pred}**") 
-        if pred == "glass":
+        st.title(f"**{pred}**") 
+        if pred == "Glass":
             st.markdown("### :recycle: It's recycable!") 
             st.markdown("### :bulb: Useful tip: Rinse bottle and jars to remove food waste")
-        elif pred =="cardboard":
+        elif pred =="Cardboard":
             st.markdown("### :recycle: It's recycable!") 
             st.markdown("### :bulb: Useful tip: Keep it dry and remove contaminants such as plastic")
-        elif pred =="paper":
-            st.markdown("### It's recycable!") 
+        elif pred =="Paper":
+            st.markdown("### :recycle: It's recycable!") 
             st.markdown("### :bulb: Useful tip: Keep it unshredded and dry ")
-        elif pred =="glass":
-            st.markdown("### It's recycable!") 
+        elif pred =="Plastic":
+            st.markdown("### :recycle: It's recycable!") 
             st.markdown("### :bulb: Useful tip: Rinse bottle and jars to remove food waste ")
-        elif pred =="metal":
-            st.markdown("### It's recycable!") 
+        elif pred =="Metal":
+            st.markdown("### :recycle: It's recycable!") 
             st.markdown("### :bulb: Useful tip: Remove any debris and contaminants ")
-        elif pred =="compost":
+        elif pred =="Compost":
             st.markdown("### Composting!")
             st.markdown("### :bulb: Useful tip: Fertilize your plants and nourish your garden ")
-        elif pred == "trash":
+        elif pred == "Trash":
             st.markdown("### :warning: NOT recyclable!")
         
         
