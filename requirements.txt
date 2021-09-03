@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # packaging
 pip>=9
 setuptools>=26
@@ -34,3 +35,6 @@ joblib
 memoized-property
 termcolor
 python-multipart
+=======
+streamlit
+>>>>>>> origin/new-frontend
