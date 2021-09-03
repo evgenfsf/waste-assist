@@ -1,15 +1,12 @@
-<<<<<<< HEAD
 from fastapi.param_functions import Body
-=======
 
->>>>>>> origin/new-frontend
 import streamlit as st
 import io
 from PIL import Image
 import requests
 import numpy as np
 import json
-<<<<<<< HEAD
+
 with open('params.json') as f:
     API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
 
@@ -28,7 +25,7 @@ uploaded_img = st.sidebar.file_uploader(" ",type=['png', 'jpg', 'jpeg'] )
 
 if uploaded_img is not None:
     user_img = Image.open(uploaded_img)
-=======
+    
 import time 
 with open('params.json') as f:
     API_URL = json.load(f)['API_URL'] #remember to create this file with the API URL endpoint specified
@@ -62,7 +59,6 @@ uploaded_img = st.sidebar.file_uploader(" ",type=['jpg', 'jpeg'] )
 if uploaded_img is not None:
     user_img = Image.open(uploaded_img)
     user_img = user_img.resize((256,256))
->>>>>>> origin/new-frontend
     user_img.save("test.jpg")
     img_bytes = io.BytesIO()
     user_img.save(img_bytes, format='JPEG')
@@ -73,7 +69,6 @@ if uploaded_img is not None:
 else:
     print('Image not found, please try again')
 
-<<<<<<< HEAD
 # string_img = Image.getdata(user_img)
 
 if st.button("Click here to classify your waste"):
@@ -111,7 +106,6 @@ if st.button("Click here to classify your waste"):
 #         # for when we have the prediction
 #         with st.spinner('Predicting material...'):
 #             st.text("The material is classified as: pred ")
-=======
 with st.spinner('Be patient, saving the world takes time ...'):
         
     if st.button("Classify your waste"):
@@ -142,11 +136,3 @@ with st.spinner('Be patient, saving the world takes time ...'):
         elif pred == "Trash":
             st.markdown("### :warning: NOT recyclable!")
         
-        
-        
-
-    
-
-
-
->>>>>>> origin/new-frontend
