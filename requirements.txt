@@ -35,4 +35,3 @@ memoized-property
 termcolor
 python-multipart
 streamlit
-
